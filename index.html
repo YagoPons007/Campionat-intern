@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Contactos (Con Login)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Gestor de Contactos</h1>
+
+    <!-- ====== Sección de Login ====== -->
+    <div id="login-section">
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="loginEmail">Correo:</label>
+          <input type="email" id="loginEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Contraseña:</label>
+          <input type="password" id="loginPassword" required />
+        </div>
+        <button type="submit">Entrar</button>
+      </form>
+      <p>
+        ¿No tienes cuenta?
+        <a href="#" id="show-register">Regístrate</a>
+      </p>
+      <div id="login-mensaje"></div>
+    </div>
+
+    <!-- ====== Sección de Registro ====== -->
+    <div id="register-section" style="display: none;">
+      <h2>Registro de Usuario</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="registerEmail">Correo:</label>
+          <input type="email" id="registerEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Contraseña:</label>
+          <input type="password" id="registerPassword" required />
+        </div>
+        <button type="submit">Crear Cuenta</button>
+      </form>
+      <p>
+        ¿Ya tienes cuenta?
+        <a href="#" id="show-login">Inicia Sesión</a>
+      </p>
+      <div id="register-mensaje"></div>
+    </div>
+
+    <!-- ====== Sección de App (Formulario de Contactos) ====== -->
+    <div id="app-section" style="display: none;">
+      <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+      <h2>Agregar Contacto</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="firstName">Nombre:</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellidos:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="gender">Sexo:</label>
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="age">Edad:</label>
+          <input type="number" id="age" name="age" min="0" required />
+        </div>
+        <button type="submit">Guardar Contacto</button>
+      </form>
+      <div id="mensaje"></div>
+    </div>
+  </div>
+
+  <!-- Importar app.js como módulo para usar Firebase v9 -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
