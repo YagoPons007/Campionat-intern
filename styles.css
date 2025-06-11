@@ -1,91 +1,300 @@
-/* estilos básicos para centrar y darle un poco de color */
+/* ===== Reset y tipografía base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+header {
+  background: #4a148c;
+  color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #f2f2f2;
+}
+
+.logout-btn {
+  background-color: #e53935;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #c62828;
+}
+
+/* ===== Container principal ===== */
+.container {
+  flex: 1;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== Card general ===== */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Encabezados de sección ===== */
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #4a148c;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== Formulario ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group.small {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4a148c;
+  outline: none;
+}
+
+.form-group-inline {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ===== Botones ===== */
+.btn-primary {
+  background-color: #4a148c;
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #6a1b9a;
+}
+
+/* ===== Texto de alternar login/registro ===== */
+.toggle-text {
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.toggle-text a {
+  color: #4a148c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.toggle-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Mensajes de feedback ===== */
+.message {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.message.error {
+  color: #d32f2f;
+}
+
+.message.success {
+  color: #388e3c;
+}
+
+/* ===== Input de búsqueda ===== */
+.search-input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border 0.2s;
+  margin-bottom: 1rem;
+}
+
+.search-input:focus {
+  border-color: #4a148c;
+  outline: none;
+}
+
+/* ===== Listado de contactos ===== */
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.contact-card {
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.contact-header .avatar {
+  font-size: 2rem;
+}
+
+.contact-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-details {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  color: #555;
+}
+
+.contact-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-actions .edit-btn {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.contact-actions .edit-btn:hover {
+  background-color: #1565c0;
+}
+
+.contact-actions .delete-btn {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.contact-actions .delete-btn:hover {
+  background-color: #c62828;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #4a148c;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .form-group-inline {
+    flex-direction: column;
   }
-  
-  .container {
-    max-width: 450px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #444;
-    margin-bottom: 15px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  input[type="text"],
-  input[type="tel"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0069d9;
-  }
-  
-  #mensaje,
-  #login-mensaje,
-  #register-mensaje {
-    margin-top: 15px;
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  .logout-btn {
-    display: block;
-    width: auto;
-    margin-left: auto;
-    margin-bottom: 20px;
-    padding: 6px 12px;
-    background-color: #dc3545;
-  }
-  
-  .logout-btn:hover {
-    background-color: #c82333;
-  }
-  
+}
