@@ -3,96 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestor de Contactos (Con Login)</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Gestor de Contactos Avanzado</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Gestor de Contactos</h1>
+  <header>
+    <div class="header-container">
+      <h1>📇 Mi Gestor de Contactos</h1>
+      <div class="app-nav" style="display: none;">
+        <button id="btn-form" class="btn-secondary">Agregar Contacto</button>
+        <button id="btn-list" class="btn-secondary">Ver Contactos</button>
+      </div>
+      <button id="logout-btn" class="logout-btn" style="display: none;">
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
 
-    <!-- ====== Sección de Login ====== -->
-    <div id="login-section">
-      <h2>Iniciar Sesión</h2>
-      <form id="login-form">
+  <main class="container">
+
+    <!-- ==== Sección de Login ==== -->
+    <section id="login-section" class="card">
+      <h2>🔑 Iniciar Sesión</h2>
+      <form id="login-form" class="form">
         <div class="form-group">
           <label for="loginEmail">Correo:</label>
-          <input type="email" id="loginEmail" required />
+          <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required />
         </div>
         <div class="form-group">
           <label for="loginPassword">Contraseña:</label>
-          <input type="password" id="loginPassword" required />
+          <input type="password" id="loginPassword" placeholder="********" required />
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit" class="btn-primary">Entrar</button>
       </form>
-      <p>
+      <p class="toggle-text">
         ¿No tienes cuenta?
         <a href="#" id="show-register">Regístrate</a>
       </p>
-      <div id="login-mensaje"></div>
-    </div>
+      <div id="login-mensaje" class="message"></div>
+    </section>
 
-    <!-- ====== Sección de Registro ====== -->
-    <div id="register-section" style="display: none;">
-      <h2>Registro de Usuario</h2>
-      <form id="register-form">
+    <!-- ==== Sección de Registro ==== -->
+    <section id="register-section" class="card" style="display: none;">
+      <h2>📝 Registro de Usuario</h2>
+      <form id="register-form" class="form">
         <div class="form-group">
           <label for="registerEmail">Correo:</label>
-          <input type="email" id="registerEmail" required />
+          <input type="email" id="registerEmail" placeholder="ejemplo@correo.com" required />
         </div>
         <div class="form-group">
           <label for="registerPassword">Contraseña:</label>
-          <input type="password" id="registerPassword" required />
+          <input type="password" id="registerPassword" placeholder="********" required />
         </div>
-        <button type="submit">Crear Cuenta</button>
+        <button type="submit" class="btn-primary">Crear Cuenta</button>
       </form>
-      <p>
+      <p class="toggle-text">
         ¿Ya tienes cuenta?
         <a href="#" id="show-login">Inicia Sesión</a>
       </p>
-      <div id="register-mensaje"></div>
-    </div>
+      <div id="register-mensaje" class="message"></div>
+    </section>
 
-    <!-- ====== Sección de App (Formulario de Contactos) ====== -->
-    <div id="app-section" style="display: none;">
-      <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
-      <h2>Agregar Contacto</h2>
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="firstName">Nombre:</label>
-          <input type="text" id="firstName" name="firstName" required />
-        </div>
-        <div class="form-group">
-          <label for="lastName">Apellidos:</label>
-          <input type="text" id="lastName" name="lastName" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Correo electrónico:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="gender">Sexo:</label>
-          <select id="gender" name="gender" required>
-            <option value="" disabled selected>Selecciona...</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="age">Edad:</label>
-          <input type="number" id="age" name="age" min="0" required />
-        </div>
-        <button type="submit">Guardar Contacto</button>
-      </form>
-      <div id="mensaje"></div>
-    </div>
-  </div>
+    <!-- ==== Sección de App ==== -->
+    <section id="app-section" style="display: none;">
 
-  <!-- Importar app.js como módulo para usar Firebase v9 -->
-  <script type="module" src="app.js"></script>
+      <!-- Formulario de agregar/editar -->
+      <div id="form-section" class="card">
+        <h2>➕ Agregar / Editar Contacto</h2>
+        <form id="contact-form" class="form">
+          <input type="hidden" id="contactId" value="" />
+          <div class="form-group">
+            <label for="firstName">Nombre:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Juan" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Apellidos:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Pérez" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+34 612 345 678" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="juan@ejemplo.com" required />
+          </div>
+          <div class="form-group-inline">
+            <div class="form-group small">
+              <label for="gender">Sexo:</label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Selecciona...</option>
+                <option value="Masculino">👨 Masculino</option>
+                <option value="Femenino">👩 Femenino</option>
+                <option value="Otro">🌈 Otro</option>
+              </select>
+            </div>
+            <div class="form-group small">
+              <label for="age">Edad:</label>
+              <input type="number" id="age" name="age" min="0" placeholder="30" required />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" id="submit-contact-btn">
+            Guardar Contacto
+          </button>
+        </form>
+        <div id="mensaje" class="message"></div>
+      </div>
+
+      <!-- Lista de contactos -->
+      <div id="list-section" class="card" style="display: none;">
+        <h2>🔍 Buscar Contactos</h2>
+        <input type="text" id="search-input" class="search-input" placeholder="Busca por nombre o apellido..." />
+        <h2>📋 Lista de Contactos</h2>
+        <div id="contact-list" class="contact-list"></div>
+        <div id="empty-list" class="message" style="display: none;">Vacío</div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Mi Gestor de Contactos. Todos los derechos reservados.</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
